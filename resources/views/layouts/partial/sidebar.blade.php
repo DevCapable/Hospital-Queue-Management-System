@@ -1,8 +1,8 @@
  <div class="sidebar" data-color="purple" data-background-color="white" src="{{ asset('backend/img/sidebar-1.jpg') }}">
-     
+
       <div class="logo">
         <a href="{{route('admin.dashboard')}}" class="simple-text logo-normal">
-           Q M S
+           Medical Resources <br>& Queuing System
         </a>
       </div>
       <div class="sidebar-wrapper">

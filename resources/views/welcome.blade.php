@@ -19,15 +19,19 @@
 <div class="loader-section section-left"></div>
 <div class="loader-section section-right"></div>
 </div>
-@include('layouts.partial.msg')
+<div>
+    @include('layouts.partial.msg')
+</div>
 </br>
 <div id=login-page class=row>
 <div class="col s12 z-depth-4 card-panel">
 <form class=login-form method="post" action="{{route('queue.reserve')}}">
 	@csrf
 <div class=row>
-<div class="input-field col s12 center">
-<p class="center login-form-text" style="font-size:23px;margin-top:5px"><b>Q M S</b></p>
+<div class="input-field col s12 center p-0">
+    <strong style="align-content: center; font-family: 'Times New Roman'; font-size: 30px; font-weight: bold">Medical e-Consultation Resource and Queuing System
+    </strong>
+    <p style="color: red"> ( A Case Study of University of Ilorin Teaching Hospital).</p>
 <p class="center login-form-text" style=letter-spacing:1px>Take Service</p>
 </div>
 </div>
