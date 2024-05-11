@@ -54,7 +54,7 @@
 </form>
 </div>
 <div class="row center-align white-text" style=margin-bottom:0>
-<span>Developed by <a href="http://www.justlabtech.com/" target=_blank style="color:#ccc">Remon Hasan</a></span>
+<span>Developed by <a href="https://github.com/DevCapable/Hospital-Queue-Management-System" target=_blank style="color:#ccc">Dev Capable</a></span>
 </div>
 </div>
 <script src="{{asset('frontend/assets/js/plugins/jquery-1.11.2.min.js.pagespeed.jm.J-8M9bCq0j.js')}}"></script>
