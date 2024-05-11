@@ -23,7 +23,8 @@ class HomeController extends Controller
     {
         $notification = DB::table('notifications')->latest()->first();
 
-        $queues = Queue::all();
+//        $queues = Queue::all();
+        $queues = Queue::orderByRaw("CASE WHEN service = 'EMERGENCY' THEN 0 ELSE 1 END")->get();
         return view('welcome',compact('queues','notification'));
 //        return view('welcome');
     }

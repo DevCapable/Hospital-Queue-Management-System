@@ -19,10 +19,6 @@
 <div class="loader-section section-left"></div>
 <div class="loader-section section-right"></div>
 </div>
-<div>
-    @include('layouts.partial.msg')
-</div>
-</br>
 <div id=login-page class=row>
 <div class="col s12 z-depth-4 card-panel">
     <div id="login-page" class="row">
@@ -35,6 +31,25 @@
 
             <div class="z-depth-4 card-panel" style="width: 300px; margin: auto;">
                 <p class="center login-form-text" style="letter-spacing:1px">Take Service</p>
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger" style="color: red">
+                            <button type="button" aria-label="Close" class="close" onclick="this.parentElement.style.display='none'">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <span><b>Danger - </b>{{ $error }}</span>
+                        </div>
+                    @endforeach
+                @endif
+
+                @if(session('successMsg'))
+                    <div class="alert alert-success" style="color: green">
+                        <button type="button" aria-label="Close" class="close" onclick="this.parentElement.style.display='none'">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <span><b>Success - </b>{{ session('successMsg') }}</span>
+                    </div>
+                @endif
 
                 <form class="login-form" method="post" action="{{ route('queue.reserve') }}">
                     @csrf
@@ -67,7 +82,6 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        @include('layouts.partial.msg')
                         <div class="card">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title ">All Available Patients on Queues</h4>
