@@ -23,9 +23,9 @@
 <div class="col s12 z-depth-4 card-panel">
     <div id="login-page" class="row">
         <div class="input-field col s12 center p-0">
-            <strong style="align-content: center; font-family: 'Times New Roman'; font-size: 30px; font-weight: bold">Medical e-Consultation Resource and Queuing System
+            <strong style="align-content: center; font-family: 'Times New Roman'; font-size: 40px; font-weight: bold">Medical e-Consultation Resource and Queuing System
             </strong>
-            <p style="color: red"> (A Case Study of University of Ilorin Teaching Hospital).</p>
+            <p style="color: #0f9d58; font-size: 30px"> (A Case Study of University of Ilorin Teaching Hospital).</p>
         </div>
         <div class="col s12">
 
@@ -143,6 +143,29 @@
 
 <script>eval(mod_pagespeed_a5mfZXeHps);</script>
 <script>eval(mod_pagespeed_sSsjFjS4KJ);</script>
+
+{{--@push('scripts')--}}
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable();
+        } );
+        var x = document.getElementById("myAudio");
+
+        function playAudio(id) {
+
+            x.play();
+            var name = $('#s_name'+id).val();
+            alert(name);
+            event.preventDefault();
+            document.getElementById('status-form-'+id).submit();
+            //alert("working");
+        }
+    </script>
+
+{{--@endpush--}}
 <script>function load(){$('body').removeClass('loaded');return true;}</script>
 </body>
 
