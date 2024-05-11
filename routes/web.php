@@ -20,6 +20,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('welcome');
 Route::post('/queue', 'QueueController@reserve')->name('queue.reserve');
+Route::post('/notification', 'QueueController@notification')->name('notification.create');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');

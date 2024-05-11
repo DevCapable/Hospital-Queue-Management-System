@@ -25,38 +25,98 @@
 </br>
 <div id=login-page class=row>
 <div class="col s12 z-depth-4 card-panel">
-<form class=login-form method="post" action="{{route('queue.reserve')}}">
-	@csrf
-<div class=row>
-<div class="input-field col s12 center p-0">
-    <strong style="align-content: center; font-family: 'Times New Roman'; font-size: 30px; font-weight: bold">Medical e-Consultation Resource and Queuing System
-    </strong>
-    <p style="color: red"> ( A Case Study of University of Ilorin Teaching Hospital).</p>
-<p class="center login-form-text" style=letter-spacing:1px>Take Service</p>
-</div>
-</div>
-<div class="row margin">
-<div class="input-field col s12">
-<i class="mdi-action-account-box prefix"></i>
-<input id=username type=text name=name placeholder=customername value="" autofocus>
-<label for=username class=active>Customer Name</label>
-</div>
+    <div id="login-page" class="row">
+        <div class="input-field col s12 center p-0">
+            <strong style="align-content: center; font-family: 'Times New Roman'; font-size: 30px; font-weight: bold">Medical e-Consultation Resource and Queuing System
+            </strong>
+            <p style="color: red"> (A Case Study of University of Ilorin Teaching Hospital).</p>
+        </div>
+        <div class="col s12">
+
+            <div class="z-depth-4 card-panel" style="width: 300px; margin: auto;">
+                <p class="center login-form-text" style="letter-spacing:1px">Take Service</p>
+
+                <form class="login-form" method="post" action="{{ route('queue.reserve') }}">
+                    @csrf
+                    <div class="row">
+
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s12">
+                            <i class="mdi-action-account-box prefix"></i>
+                            <input id="username" type="text" name="name" placeholder="customername" value="" autofocus>
+                            <label for="username" class="active">Customer Name</label>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s12">
+                            <i class="mdi-action-assignment prefix"></i>
+                            <input id="username" type="text" name="service" placeholder="servicename" value="" autofocus>
+                            <label for="username" class="active">Service Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button type="submit" class="btn waves-effect waves-light col s12">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        @include('layouts.partial.msg')
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title ">All Available Patients on Queues</h4>
+                                <marquee behavior="10" direction="right"><strong style="color: red">{{$notification->message}}</strong></marquee>
+                                <audio id="myAudio">
+                                    <source src="{{asset('backend/customer.M4A')}}" type="audio/mpeg">
+                                </audio>
+                            </div>
+                            <div class="card-content table-responsive">
+                                <table id="table" class="table"  cellspacing="0" width="100%">
+                                    <thead class="text-primary">
+                                    <th>ID</th>
+                                    <th>Customer Name</th>
+                                    <th>Service Name</th>
+                                    <th>Status</th>
+                                    <th>Created At</th>
+{{--                                    <th>Action</th>--}}
+                                    </thead>
+                                    <tbody>
+                                    @foreach($queues as $key=>$queue)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $queue->name }}</td>
+                                            <td>{{ $queue->service }}</td>
+
+                                            <th>
+                                                @if($queue->status == true)
+                                                    <span style="color: green">Called</span>
+                                                @else
+                                                    <span style="color: red">not Called yet</span>
+                                                @endif
+
+                                            </th>
+                                            <td>{{ $queue->created_at }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
 </div>
 
-<div class="row margin">
-<div class="input-field col s12">
-<i class="mdi-action-assignment prefix"></i>
-<input id=username type=text name=service placeholder=servicename value="" autofocus>
-<label for=username class=active>Service Name</label>
-</div>
-</div>
-<div class=row>
-<div class="input-field col s12">
-<button type=submit class="btn waves-effect waves-light col s12">Submit</button>
-</div>
-</div>
-</form>
-</div>
+
 <div class="row center-align white-text" style=margin-bottom:0>
 <span>Developed by <a href="https://github.com/DevCapable/Hospital-Queue-Management-System" target=_blank style="color:#ccc">Dev Capable</a></span>
 </div>

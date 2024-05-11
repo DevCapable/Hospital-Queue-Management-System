@@ -81,8 +81,44 @@
             </div>
         </div>
     </div>
-@endsection
+    <div class="col s12">
+            <form class="login-form" method="post" action="{{ route('notification.create') }}">
+                @csrf
 
+                <div class="row margin">
+                    <div class="col-xl-12">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input id="title" type="text" class="form-control" name="title" placeholder="Title" value="" autofocus>
+                        </div>
+                    </div>
+                </div>
+
+
+{{--                <div class="row margin">--}}
+{{--                    <div class="input-field col-xl-12">--}}
+{{--                        <i class="mdi-action-account-box prefix"></i>--}}
+{{--                        <input id="title" type="text" name="title" placeholder="Title" value="" autofocus>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+                <br>
+                <div class="row margin">
+                    <div class="col-xl-12">
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" name="message" placeholder="Enter Message" style="min-height: 100px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <button type="submit" class="btn waves-effect waves-light col s12">Submit</button>
+                    </div>
+                </div>
+            </form>
+</div>
+@endsection
 @push('scripts')
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
