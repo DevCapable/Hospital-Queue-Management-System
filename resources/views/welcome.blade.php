@@ -85,7 +85,7 @@
                         <div class="card">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title ">All Available Patients on Queues</h4>
-                                <marquee behavior="10" direction="right"><strong style="color: red">{{$notification->message}}</strong></marquee>
+                                <marquee behavior="10" direction="right"><strong style="color: red; font-size: 30px">{{$notification->message}}</strong></marquee>
                                 <audio id="myAudio">
                                     <source src="{{asset('backend/customer.M4A')}}" type="audio/mpeg">
                                 </audio>

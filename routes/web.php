@@ -26,6 +26,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
     Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
     Route::get('queue', 'QueueController@index')->name('queue.index');
     Route::post('queue/{id}', 'QueueController@status')->name('queue.status');
+    Route::post('publication/{id}', 'QueueController@publication')->name('queue.publication');
+
     Route::delete('queue/{id}', 'QueueController@destroy')->name('queue.destroy');
 });
 

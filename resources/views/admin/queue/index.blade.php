@@ -33,6 +33,9 @@
                                 </thead>
                                 <tbody>
                                     @foreach($queues as $key=>$queue)
+                                        @php($publish = $queue->publication ? 'unpublished' : 'published')
+                                        @php($class = $queue->publication ? 'btn btn-default btn-sm' : 'btn btn-success btn-sm')
+
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $queue->name }}</td>
@@ -48,6 +51,19 @@
                                             </th>
                                             <td>{{ $queue->created_at }}</td>
                                             <td>
+
+
+                                                    <form id="publication-form-{{ $queue->id }}" action="{{ route('queue.publication',$queue->id) }}" style="display: none;" method="POST">
+                                                        @csrf
+                                                    </form>
+                                                    <input type="hidden" id="publish{{$queue->id}}" name="publish" value="{{$queue->name}}">
+                                                    <button type="button" class="{{$class}}" onclick="if(confirm('Are you sure you want to unpublish this?')){
+                                                            playPublic({{$queue->id}});
+
+                                                            }else {
+                                                            event.preventDefault();
+                                                            } "><i class="card-icon"></i>   {{ $publish }}</button>
+
                                                 @if($queue->status == false)
                                                     <form id="status-form-{{ $queue->id }}" action="{{ route('queue.status',$queue->id) }}" style="display: none;" method="POST">
                                                         @csrf
@@ -95,12 +111,6 @@
                 </div>
 
 
-{{--                <div class="row margin">--}}
-{{--                    <div class="input-field col-xl-12">--}}
-{{--                        <i class="mdi-action-account-box prefix"></i>--}}
-{{--                        <input id="title" type="text" name="title" placeholder="Title" value="" autofocus>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
                 <br>
                 <div class="row margin">
                     <div class="col-xl-12">
@@ -138,6 +148,16 @@ function playAudio(id) {
     document.getElementById('status-form-'+id).submit();
     //alert("working");
 }
+
+    function playPublic(id) {
+
+        x.play();
+        var name = $('#publish'+id).val();
+        alert(name);
+        event.preventDefault();
+        document.getElementById('publication-form-'+id).submit();
+        //alert("working");
+    }
 </script>
 
 @endpush

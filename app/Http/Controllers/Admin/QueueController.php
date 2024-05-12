@@ -23,6 +23,20 @@ class QueueController extends Controller
        return redirect()->route('queue.index')->with('successMsg','Request Successfully confirmed');
     }
 
+    public function publication(Request $request, $id){
+        $queue = Queue::find($id);
+        if ($queue->publication){
+            $queue->publication = false;
+            $queue->save();
+        }else{
+            $queue->publication = true;
+            $queue->save();
+        }
+
+//        $queue->user_id=auth()->id();
+        return redirect()->route('queue.index')->with('successMsg','Request Successfully confirmed');
+    }
+
      public function destroy($id){
          // Find the queue item by ID
          $queue = Queue::findOrFail($id);
